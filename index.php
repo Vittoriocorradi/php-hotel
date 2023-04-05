@@ -37,9 +37,9 @@ $hotels = [
         'vote' => 2,
         'distance_to_center' => 50
     ],
-
 ];
 
+$checked = $_GET['parking'] ?? '';
 
 ?>
 
@@ -86,16 +86,15 @@ $hotels = [
                             if ($key === 'parking' && $value === true) {
                                 $value = 'Sì';
                             } 
+                            if ($key === 'distance_to_center') {
+                                $value .= 'km';
+                            } 
+                            if ($checked === 'on' && $hotel['parking'] === true) {
+                                ?><td><?php echo $value; ?></td>    
+                            <?php } elseif ($checked === '') {
+                                ?><td><?php echo $value; ?></td>
+                            <?php }
                         ?> 
-                            <td>
-                                <?php 
-                                    if ($key === 'distance_to_center') {
-                                        echo $value.'km';
-                                    } else {
-                                        echo $value;
-                                    } 
-                                ?>
-                            </td>
                         <?php endforeach ?>
                     </tr>
                 <?php endforeach ?>
