@@ -40,6 +40,7 @@ $hotels = [
 
 ];
 
+
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +56,25 @@ $hotels = [
 <body>
     <main>
         <table>
-            
+            <thead>
+                <tr>
+                <?php foreach ($hotels[0] as $key => $property): ?>
+                    <th><?php echo $key; ?></th>
+                <?php endforeach ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $hotel): ?>
+                    <tr>
+                        <?php foreach ($hotel as $key => $value): ?> 
+                            <td><?php echo $value; ?></td>
+                        <?php endforeach ?>
+                    </tr>
+                <?php endforeach ?>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
         </table>
     </main>
 </body>
