@@ -58,8 +58,17 @@ $hotels = [
     <title>PHP Hotel</title>
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark p-4">
     <main class="p-5">
+        <form action="index.php" method="GET" class="d-flex ps-3 mb-5">
+            <div class="d-flex">
+                <label for="parking" class="text-white lh-lg">Solo hotel con parcheggio</label>
+                <input type="checkbox" name="parking" id="parking" class="ms-2 me-4">
+            </div>
+            <div>
+                <button class="btn btn-outline-light">Filtra</button>
+            </div>
+        </form>
         <table class="table table-dark table-striped table-hover">
             <thead>
                 <tr>
