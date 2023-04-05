@@ -50,30 +50,46 @@ $hotels = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- /Bootstrap CSS -->
+
     <title>PHP Hotel</title>
 </head>
 
-<body>
-    <main>
-        <table>
+<body class="bg-dark">
+    <main class="p-5">
+        <table class="table table-dark table-striped table-hover">
             <thead>
                 <tr>
-                <?php foreach ($hotels[0] as $key => $property): ?>
-                    <th><?php echo $key; ?></th>
-                <?php endforeach ?>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Parcheggio</th>
+                    <th>Voto</th>
+                    <th>Distanza dal centro</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($hotels as $hotel): ?>
                     <tr>
-                        <?php foreach ($hotel as $key => $value): ?> 
-                            <td><?php echo $value; ?></td>
+                        <?php foreach ($hotel as $key => $value): 
+                            if ($key === 'parking' && $value === true) {
+                                $value = 'Sì';
+                            } 
+                        ?> 
+                            <td>
+                                <?php 
+                                    if ($key === 'distance_to_center') {
+                                        echo $value.'km';
+                                    } else {
+                                        echo $value;
+                                    } 
+                                ?>
+                            </td>
                         <?php endforeach ?>
                     </tr>
                 <?php endforeach ?>
-                <tr>
-                    <td></td>
-                </tr>
             </tbody>
         </table>
     </main>
